@@ -12,33 +12,23 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-strip');
-
+    grunt.loadNpmTasks('grunt-includes');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-mustache-render');
 
     // Define the configuration for all the tasks
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-
         clean: {
+            dev: {
+                src: ["dev"]
+            },
             build: {
-                src: ["dist", "tmp", ".tmp", "dest", "src"]
+                src: ["dist", "test", ".tmp", "tmp", "dest", ".tmp"]
             },
 
             trash: {
-                src: ["tmp", ".tmp", "dest", "src"]
-            }
-        },
-
-        useminPrepare: {
-            src: ['app/includes/head.html', 'dist/includes/head.html'],
-            options: {
-                dest: 'dist'
-            }
-        },
-
-        usemin: {
-            html: 'dist/includes/head.html',
-            options: {
-                assetsDirs: ['dist']
+                src: [".tmp"]
             }
         },
 
@@ -51,19 +41,57 @@ module.exports = function (grunt) {
             dist: {
                 files: {
                     src: [
-                        'dist/**/*.{js,css,img,jpg,gif,png}',
+                        'dev/**/*.{js,css,img,jpg,gif,png}'
                     ]
                 }
             }
         },
 
+        useminPrepare: {
+            src: ['src/includes/head.html', 'src/includes/footer.html'],
+            options: {
+                dest: 'dev', // destino arquivos concatenados -> unificados
+                root: 'src'
+            }
+        },
+
+        usemin: {
+            html: 'dev/**/*.html',
+            options: {
+                assetsDirs: ['dev']
+            }
+        },
+
+        includes: {
+            dev: {
+                options: {
+                    debug: false
+                },
+                files: [{
+                    cwd: 'dev/',
+                    src: ['**/*.html'],
+                    dest: 'dev' // it must override
+                }]
+            }
+        },
+
         copy: {
-            dist: {
+            dev: {
                 files: [
                     {
-                        cwd: 'app/',
+                        cwd: 'src/',
+                        src: ['*.html', 'includes/*.html', 'resources/js/config.js'],
+                        dest: 'dev',
+                        expand: true
+                    }
+                ]
+            },
+            package: {
+                files: [
+                    {
+                        cwd: 'dev/',
                         expand: true,
-                        src: ['**/*.html', '**/*.json', '**/*.png', '**/*.jpg', '**/*.ico'],
+                        src: ['*.html', 'resources/**'],
                         dest: 'dist'
                     }
                 ]
@@ -87,20 +115,6 @@ module.exports = function (grunt) {
             }
         },
 
-        compress: {
-            main: {
-                options: {
-                    archive: 'site.zip'
-                },
-                files: [{
-                    src: ['**'],
-                    dest: 'zip/',
-                    cwd: 'dist/',
-                    expand: true
-                }]
-            }
-        },
-
         // STRIP CONSOLE.log
         strip: {
             main: {
@@ -111,31 +125,57 @@ module.exports = function (grunt) {
             }
         },
 
+
         concat: {
             analytics: {
-                 src: ['dist/includes/analytics.html', 'dist/includes/head.html'],
-                dest: 'dist/includes/head.html'
+                src: ['dev/includes/analytics.html', 'dev/includes/head.html'],
+                dest: 'dev/includes/head.html'
 
+            }
+        },
+
+        watch: {
+            scripts: {
+                files: ['src/**/*.*'],
+                tasks: ['dev'],
+                options: {
+                    debounceDelay: 1000
+                    //spawn: false
+                }
             }
         }
     });
 
-    grunt.registerTask('dist', [
+
+    grunt.registerTask('dev', [
+        'clean:dev',
         'clean:build',
+        'copy:dev',
+        'includes:dev',
         'useminPrepare',
         'concat:generated',
         'cssmin:generated',
         'uglify:generated',
         'rev',
-        'copy:dist',
         'usemin',
-        'htmlmin:dist',
-        'strip:main',
         'clean:trash'
     ]);
 
-    grunt.registerTask('delivery', [
-        'dist',
-        'concat:analytics'
+    grunt.registerTask('package', [
+        'clean:build',
+        'copy:dev',
+        'concat:analytics',
+        'includes:dev',
+        'useminPrepare',
+        'concat:generated',
+        'cssmin:generated',
+        'uglify:generated',
+        'rev',
+        'usemin',
+        'clean:trash',
+        'copy:package',
+        'htmlmin:dist',
+        'strip:main',
+        'clean:dev'
     ]);
 };
