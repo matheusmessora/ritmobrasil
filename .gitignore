@@ -14,3 +14,5 @@ hs_err_pid*
 
 web/node_modules/
 web/bower_components/
+web/dev/
+.idea/

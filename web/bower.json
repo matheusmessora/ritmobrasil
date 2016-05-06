@@ -1,10 +1,11 @@
 {
-  "name": "RitmoBrasil website",
+  "name": "RitmoBrasil Website",
   "version": "0.0.1",
-  "homepage": "https://github.com/git/ritmobrasil",
+  "homepage": "https://github.com/matheusmessora/ritmobrasil",
   "authors": [
     "Matheus Messora <matheus.messora.vpn@gmail.com>"
   ],
+  "description": "RitmoBrasil Website",
   "license": "MIT",
   "private": true,
   "ignore": [
@@ -15,9 +16,7 @@
     "tests"
   ],
   "dependencies": {
-    "foundation": "~5.5.2",
     "normalize.css": "~3.0.3",
-    "jquery": "~2.1.4",
-    "foundation-icon-fonts": "*"
+    "jquery": "~2.1.4"
   }
 }
