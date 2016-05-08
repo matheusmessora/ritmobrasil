@@ -15,6 +15,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-includes');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-mustache-render');
+    grunt.loadNpmTasks('grunt-contrib-less');
 
     // Define the configuration for all the tasks
     grunt.initConfig({
@@ -28,7 +29,7 @@ module.exports = function (grunt) {
             },
 
             trash: {
-                src: [".tmp"]
+                src: [".tmp", "src/resources/css/less.css"]
             }
         },
 
@@ -134,16 +135,28 @@ module.exports = function (grunt) {
             }
         },
 
+
         watch: {
             scripts: {
-                files: ['src/**/*.*'],
+                files: ['src/**/*.html', 'src/**/*.js', 'src/resources/css/colors.less', 'src/resources/css/source.less'],
                 tasks: ['dev'],
                 options: {
                     debounceDelay: 1000
                     //spawn: false
                 }
             }
+        },
+        less: {
+            dev: {
+                options: {
+                    paths: ['src/resources/css']
+                },
+                files: {
+                    'src/resources/css/less.css': 'src/resources/css/source.less'
+                }
+            }
         }
+
     });
 
 
@@ -152,6 +165,7 @@ module.exports = function (grunt) {
         'clean:build',
         'copy:dev',
         'includes:dev',
+        'less:dev',
         'useminPrepare',
         'concat:generated',
         'cssmin:generated',
