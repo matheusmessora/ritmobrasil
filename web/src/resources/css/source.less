@@ -1,24 +1,47 @@
 @import "colors";
 @import "decoration";
+@import "text";
 
 body {
-  background: #FFFFFF;
-  //background: #F5F5F5;
+  //background: #FFFFFF;
+  background: #00BCD4;
 }
-
 
 .panel {
-  background: @base;
+  //background: @base;
+  background: #fafafa;
+  border-radius: 2px;
+  transition: all 400ms cubic-bezier(0.165, 0.840, 0.440, 1.000);
+  .z-1;
 }
 
+.card {
+  background: #fafafa;
+  border-radius: 2px;
+  transition: all 400ms cubic-bezier(0.165, 0.840, 0.440, 1.000);
+  .z-1;
+}
+
+@jumbotron-font-size: 70px;
 .panel-body {
-  height: 330px;
+  height: 230px;
 }
 
-.panel-footer {
-
+.glyphicon-jumbotron {
+  font-size: @jumbotron-font-size;
 }
 
-.row {
+.glyphicon-jumbotron-2 {
+  font-size: @jumbotron-font-size * 2px;
+  margin-left: 5px;
+  margin-top: 25px;
+  //margin: 35px
+}
 
+.badge-live {
+  background: #FF1100;
+}
+
+.header-holder {
+  margin-bottom: 30px;
 }

@@ -138,7 +138,14 @@ module.exports = function (grunt) {
 
         watch: {
             scripts: {
-                files: ['src/**/*.html', 'src/**/*.js', 'src/resources/css/colors.less', 'src/resources/css/source.less'],
+                files: [
+                    'src/**/*.html',
+                    'src/**/*.js',
+                    'src/resources/css/colors.less',
+                    'src/resources/css/source.less',
+                    'src/resources/css/text.less',
+                    'src/resources/css/decoration.less',
+                    'src/resources/css/text.less'],
                 tasks: ['dev'],
                 options: {
                     debounceDelay: 1000

@@ -1,0 +1,39 @@
+h1 {
+  font-size: 100px;
+  font-weight: bold;
+  line-height: 40px;
+  letter-spacing: -2px;
+  .uppercase;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 40px;
+  letter-spacing: -2px;
+  .uppercase;
+}
+
+
+
+.menu {
+  font-weight: bold;
+  .uppercase;
+
+  ul {
+    list-style: none;
+
+    li {
+      margin-right: 10px;
+      font-size: 25px;
+      display: inline;
+      &:hover {
+        color: #FFFFFF;
+        cursor: pointer;
+      }
+      &.active {
+        color: @accent;
+      }
+    }
+  }
+}
