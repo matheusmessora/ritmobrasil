@@ -22,44 +22,67 @@ include "includes/player.html"
         </div>
     </div>
 
+    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+    </fb:login-button>
+
+    <div id="status">
+    </div>
+
+    <div class="row">
+
+    </div>
+
     <div class="row">
         <div class="col-md-4 col-sm-12">
             <div class="panel">
                 <div class="panel-body">
                     <p>
-                        <span class="glyphicon glyphicon glyphicon-jumbotron-2  glyphicon-equalizer"></span>
+                        <span class="glyphicon glyphicon glyphicon-jumbotron-2 glyphicon-equalizer"></span>
                     </p>
                 </div>
                 <div class="panel-footer">
-                    <h2>No ar</h2>
-                    <h4> <span class="badge badge-live">Ao vivo</span> Som da Ritmo</h4>
+                    <h2>Som da Ritmo <span class="badge badge-live">Ao vivo</span> </h2>
+                    <h4>DJ Snake</h4>
                 </div>
             </div>
         </div>
         <div class="col-md-4 col-sm-12">
             <div class="panel">
                 <div class="panel-body">
-                    <p>
-                        <span class="glyphicon glyphicon glyphicon-jumbotron-2 glyphicon-th-large "></span>
-                    </p>
-
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 style="text-align: center">Compartilhe esse Ritmo!</h3>
+                            <p>Peça sua música, mande seu alou e participe ao vivo da programação.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="fb-button">
+                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                                Login com Facebook
+                            </div>
+                        </div>
+                    </div>
+                    <p></p>
                 </div>
                 <div class="panel-footer">
                     <h2>Mande seu recado</h2>
                     <h4>Peça sua música favorita!</h4>
-
                 </div>
             </div>
         </div>
         <div class="col-md-4 col-sm-12">
             <div class="panel">
                 <div class="panel-body">
-                    <p>Rayssa Oliveira</p>
                     <p>
-                        <textarea class="form-control" rows="3" placeholder="mande sua mensagem"></textarea>
+                        <img class="fb-avatar"
+                                src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpf1/v/t1.0-1/p320x320/12439099_1244275115601054_8000796796978412964_n.png?oh=f773129c6cfb71569dc2e3a9e907db5c&oe=57B16D36&__gda__=1474654298_70b38dd77406872e2a4b0dac0ecfedf9">
+                        Rayssa Oliveira</p>
+
+                    <textarea class="form-control" rows="5" placeholder="mande sua mensagem"></textarea>
                     </p>
                     <p>
-                        <button type="button" class="btn btn-default">Enviar!</button>
+                        <button type="button" class="btn btn-default">Enviar</button>
                     </p>
 
                 </div>
@@ -72,7 +95,7 @@ include "includes/player.html"
         </div>
 
     </div>
-    <div class="row">
+    <div class="row" style="display:none">
         <div class="col-md-4 col-sm-12">
             <div class="panel">
                 <div class="panel-body">
@@ -180,7 +203,6 @@ include "includes/player.html"
             </table>
         </div>
     </div>
-
 
 </div> <!-- /container -->
 

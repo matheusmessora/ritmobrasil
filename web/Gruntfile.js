@@ -135,7 +135,6 @@ module.exports = function (grunt) {
             }
         },
 
-
         watch: {
             scripts: {
                 files: [
@@ -144,7 +143,9 @@ module.exports = function (grunt) {
                     'src/resources/css/colors.less',
                     'src/resources/css/source.less',
                     'src/resources/css/text.less',
+                    'src/resources/css/button.less',
                     'src/resources/css/decoration.less',
+                    'src/resources/css/fb.less',
                     'src/resources/css/text.less'],
                 tasks: ['dev'],
                 options: {
