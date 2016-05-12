@@ -11,8 +11,15 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
-
+logs/
+backend/*.iml
+web/*.iml
 web/node_modules/
 web/bower_components/
 web/dev/
+
+admin/*.iml
+admin/node_modules/
+admin/bower_components/
+admin/dev/
 .idea/

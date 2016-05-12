@@ -1,31 +1,24 @@
-var GPV = GPV || {};
+var PANDOX = PANDOX || {};
 
 /*=====================================================================================================
  * SYSTEM Module
  *======================================================================================================*/
-GPV.CONFIG = function () {
+PANDOX.CONFIG = function () {
 
-    var GPV_URL = "gpv-prod.ns2online.com.br";
-    var backoffice = true;
+    var URL = "127.0.0.1:8080";
 
-    var gpvURL = function(){
-        return GPV_URL;
-    };
-
-    var isBackoffice = function() {
-        return backoffice;
+    var getURL = function(){
+        return URL;
     };
 
     var init = function () {
-        console.info("GPV.CONFIG INIT");
-        console.info("GPV.URL:", gpvURL());
-        console.info("GPV.backoffice:", isBackoffice());
+        console.info("PANDOX.CONFIG INIT");
+        console.info("PANDOX.URL:", getURL());
     };
 
     return {
         init: init,
-        gpvURL: gpvURL,
-        isBackoffice: isBackoffice
+        url: getURL
     }
 
 }();

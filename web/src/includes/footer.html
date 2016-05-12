@@ -17,15 +17,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
 <!-- endbuild -->
 
-<script src="resources/js/config.js"></script>
-
 <!-- build:js resources/js/app.js-->
-<script src="resources/js/app.js"></script>
-<script src="resources/js/util.js"></script>
-<script src="resources/js/mensagem.js"></script>
-<script src="resources/js/redis.js"></script>
-<script src="resources/js/search.js"></script>
-<script src="resources/js/version.js"></script>
+<script src="resources/js/message.js"></script>
+<script src="resources/js/config.js"></script>
 <!-- endbuild -->
 
 
@@ -33,18 +27,15 @@
 
 
 <script>
-    FB.init({
-        appId  : '119967231748351',
-        status : true, // check login status
-        cookie : true, // enable cookies to allow the server to access the session
-        xfbml  : true, // parse XFBML
-//        channelUrl : 'http://WWW.RITMOBRASIL.COM/channel.html', // channel.html file
-        oauth  : true // enable OAuth 2.0
-    });
+
+//    FB.getLoginStatus(function(response) {
+//        statusChangeCallback(response);
+//    });
+
     // This is called with the results from from FB.getLoginStatus().
     function statusChangeCallback(response) {
-        console.log('statusChangeCallback');
-        console.log(response);
+        access_token = response.authResponse.accessToken; //get access token
+        user_id = response.authResponse.userID; //get FB UID
         // The response object is returned with a status field that lets the
         // app know the current login status of the person.
         // Full docs on the response object can be found in the documentation
@@ -73,32 +64,20 @@
         });
     };
 
-    window.fbAsyncInit = function() {
-        FB.init({
-            appId: '119967231748351',
-            cookie: true,  // enable cookies to allow the server to access
-                           // the session
-            xfbml: true,  // parse social plugins on this page
-            version: 'v2.6' // use version 2.2
-        })
-    };
+    function fb_login() {
+        FB.login(function(response) {
 
+            if (response.authResponse) {
+                statusChangeCallback(response);
+            } else {
+                //user hit cancel button
+                console.log('User cancelled login or did not fully authorize.');
+            }
+        }, {
+            scope: 'public_profile,email'
+        });
+    }
 
-    // Now that we've initialized the JavaScript SDK, we call
-    // FB.getLoginStatus().  This function gets the state of the
-    // person visiting this page and can return one of three states to
-    // the callback you provide.  They can be:
-    //
-    // 1. Logged into your app ('connected')
-    // 2. Logged into Facebook, but not your app ('not_authorized')
-    // 3. Not logged into Facebook and can't tell if they are logged into
-    //    your app or not.
-    //
-    // These three cases are handled in the callback function.
-
-    FB.getLoginStatus(function(response) {
-        statusChangeCallback(response);
-    });
 
     // Load the SDK asynchronously
     (function(d, s, id) {
@@ -113,11 +92,16 @@
     // successful.  See statusChangeCallback() for when this call is made.
     function testAPI() {
         console.log('Welcome!  Fetching your information.... ');
-        FB.api('/me', function(response) {
-            console.log('Successful login for: ' + response.name);
-            var a = JSON.stringify(response);
-            document.getElementById('status').innerHTML = a;
+        $("#logging-holder").hide();
+        $("#loged-holder").show();
+        FB.api('/me?fields=gender,name,id,birthday', function(response) {
+            console.log(response);
+            $("#listener-name").html(response.name);
         });
-    };
+        FB.api('/me/picture?height=64', function(response) {
+            $("#listener-picture").html('<img class="fb-avatar" id="theImg" src="' + response.data.url + '" />');
+        });
+    }
+
 
 </script>

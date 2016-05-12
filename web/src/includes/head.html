@@ -4,9 +4,21 @@
 <meta http-equiv="Content-Language" content="pt-br">
 <link rel="shortcut icon" href="/favicon.ico?v=4"/>
 
+<script>
 
-<script src="https://connect.facebook.net/en_US/all.js"></script>
-
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId: '119967231748351',
+            cookie: true,  // enable cookies to allow the server to access
+                           // the session
+            xfbml: true,  // parse social plugins on this page
+            version: 'v2.6' // use version 2.2
+        });
+        FB.getLoginStatus(function(response) {
+            statusChangeCallback(response);
+        });
+    };
+</script>
 <!-- Font -->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,800,400' rel='stylesheet' type='text/css'>
 

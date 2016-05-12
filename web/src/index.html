@@ -22,10 +22,10 @@ include "includes/player.html"
         </div>
     </div>
 
-    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-    </fb:login-button>
-
     <div id="status">
+    </div>
+
+    <div id="token">
     </div>
 
     <div class="row">
@@ -41,12 +41,12 @@ include "includes/player.html"
                     </p>
                 </div>
                 <div class="panel-footer">
-                    <h2>Som da Ritmo <span class="badge badge-live">Ao vivo</span> </h2>
+                    <h2>Som da Ritmo <span class="badge badge-live">Ao vivo</span></h2>
                     <h4>DJ Snake</h4>
                 </div>
             </div>
         </div>
-        <div class="col-md-4 col-sm-12">
+        <div id="logging-holder" class="col-md-4 col-sm-12">
             <div class="panel">
                 <div class="panel-body">
                     <div class="row">
@@ -57,7 +57,7 @@ include "includes/player.html"
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="fb-button">
+                            <div class="fb-button" onclick="fb_login();">
                                 <i class="fa fa-facebook" aria-hidden="true"></i>
                                 Login com Facebook
                             </div>
@@ -71,18 +71,18 @@ include "includes/player.html"
                 </div>
             </div>
         </div>
-        <div class="col-md-4 col-sm-12">
+        <div id="loged-holder" class="col-md-4 col-sm-12" style="display: none">
             <div class="panel">
                 <div class="panel-body">
                     <p>
-                        <img class="fb-avatar"
-                                src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpf1/v/t1.0-1/p320x320/12439099_1244275115601054_8000796796978412964_n.png?oh=f773129c6cfb71569dc2e3a9e907db5c&oe=57B16D36&__gda__=1474654298_70b38dd77406872e2a4b0dac0ecfedf9">
-                        Rayssa Oliveira</p>
-
-                    <textarea class="form-control" rows="5" placeholder="mande sua mensagem"></textarea>
+                        <span id="listener-picture"></span>
+                        <span id="listener-name"></span>
                     </p>
+
+                    <textarea id="text-message" class="form-control" rows="5" placeholder="mande seu recado"></textarea>
+                    <p></p>
                     <p>
-                        <button type="button" class="btn btn-default">Enviar</button>
+                        <button id="send-message" type="button" class="btn btn-default">Enviar</button>
                     </p>
 
                 </div>
@@ -94,7 +94,121 @@ include "includes/player.html"
             </div>
         </div>
 
+        <div class="col-md-4 col-sm-12">
+            <div class="panel">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img
+                                    class="feature-profile-avatar"
+                                    height="100%"
+                                    width="100%"
+                                    src="https://scontent.frao1-1.fna.fbcdn.net/v/t1.0-9/12540997_1553327454990554_6809802716922936748_n.jpg?oh=0c154b501c87eae990fce2823e89fdd6&oe=57DEF883"
+                                    alt="">
+                        </div>
+                        <div class="col-md-6">
+                            <p><i class="fa fa-female" aria-hidden="true"></i> 17 anos</p>
+                            <p><i class="fa fa-map-marker" aria-hidden="true"></i> São Paulo - SP</p>
+                            <p><i class="fa fa-music" aria-hidden="true"></i> Sertanejo</p>
+                            <p><i class="fa fa-youtube" aria-hidden="true"></i> isabelrodriguesoficial</p>
+                            <p><i class="fa fa-instagram" aria-hidden="true"></i> irodrigues</p>
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="panel-footer">
+                    <h2>Isabel Rodrigues</h2>
+                    <h4>Essa é nossa artista do mês!</h4>
+                </div>
+            </div>
+        </div>
+
     </div>
+
+
+    <div class="row">
+
+        <div class="col-md-4 col-sm-12">
+            <div class="panel">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img
+                                    class="feature-profile-avatar"
+                                    height="100%"
+                                    width="100%"
+                                    src="https://scontent-gru2-1.xx.fbcdn.net/t31.0-8/10838150_10205381786371445_3772349416345912999_o.jpg"
+                                    alt="">
+                        </div>
+                        <div class="col-md-6">
+                            <p><i class="fa fa-male" aria-hidden="true"></i> 15 anos</p>
+                            <p><i class="fa fa-map-marker" aria-hidden="true"></i> Florianópolis - SC</p>
+                            <p><i class="fa fa-music" aria-hidden="true"></i> Eletrônica</p>
+                            <p><i class="fa fa-youtube" aria-hidden="true"></i> canaldodeko</p>
+                            <p><i class="fa fa-instagram" aria-hidden="true"></i> gabriel.dutra.13</p>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="panel-footer">
+                    <h2>Gabriel Dutra</h2>
+                    <h4>Garoto Ritmo!</h4>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-4 col-sm-12">
+            <div class="panel">
+                <div class="panel-body">
+                    <i class="fa fa-facebook-square glyphicon-jumbotron-2 " aria-hidden="true"></i>
+                    <i class="fa fa-twitter-square glyphicon-jumbotron-2 " aria-hidden="true"></i>
+
+                </div>
+                <div class="panel-footer">
+                    <h2>SIGA A RITMO</h2>
+                    <h4>Compartilhe e concorra a prêmios!</h4>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-12">
+            <div class="panel">
+                <div class="panel-body">
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <p><i class="fa fa-female" aria-hidden="true"></i> 22 anos</p>
+                            <p><i class="fa fa-map-marker" aria-hidden="true"></i> Palmas - TO</p>
+                            <p><i class="fa fa-music" aria-hidden="true"></i> Funk</p>
+                            <p><i class="fa fa-youtube" aria-hidden="true"></i> dinizzz</p>
+                            <p><i class="fa fa-instagram" aria-hidden="true"></i> diniz.oficial</p>
+                        </div>
+                        <div class="col-md-6">
+                            <img
+                                    class="feature-profile-avatar"
+                                    height="100%"
+                                    width="100%"
+                                    src="https://scontent-gru2-1.xx.fbcdn.net/v/t1.0-9/12032018_1008812355836517_8579753425662525316_n.jpg?oh=2a215437d970018a6df4239821d7d99b&oe=5799CDF6"
+                                    alt="">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="panel-footer">
+                    <h2>Marcela Diniz</h2>
+                    <h4>Garota Ritmo!</h4>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
     <div class="row" style="display:none">
         <div class="col-md-4 col-sm-12">
             <div class="panel">
@@ -209,8 +323,5 @@ include "includes/player.html"
 
 include "includes/footer.html"
 
-<script type="text/javascript">
-    GPV.SYSTEM.listarFilaErro();
-</script>
 </body>
 </html>
