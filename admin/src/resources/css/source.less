@@ -1,0 +1,62 @@
+@import 'colors';
+@import 'default';
+@import 'audience';
+@import url(http://fonts.googleapis.com/css?family=Oswald);
+
+body {
+  background: #2f323b;
+  color: #949ba2;
+  padding-top: 50px;
+  font-size: 14px;
+}
+
+
+.header {
+  padding-bottom: 22px;
+  border-bottom: 1px solid @separator;
+  margin-bottom: 20px;
+
+  .header-icon {
+    font-size: 60px;
+    color: #f6a821;
+    width: 68px;
+    float: left;
+    margin-top: -8px;
+    line-height: 0;
+  }
+
+  .header-title {
+    margin-left: 77px;
+
+    h3 {
+      color: @bold;
+      margin-bottom: 2px;
+    }
+  }
+}
+
+
+.panel {
+  background-color: rgba(68, 70, 79, 0.5)
+}
+.panel.active {
+  border-left: 3px solid @accent;
+}
+
+.media-body {
+
+  h4 {
+    margin-top: 0;
+    color: @bold;
+  }
+}
+.media-right {
+  .fa {
+    font-size: 24px;
+    padding-bottom: 20px;
+    &:hover {
+      cursor: pointer;
+      color: @links-hover;
+    }
+  }
+}
