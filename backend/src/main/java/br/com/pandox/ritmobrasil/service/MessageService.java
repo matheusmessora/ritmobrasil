@@ -20,9 +20,18 @@ public class MessageService {
 
     public MessageDTO save(MessageDTO messageDTO){
         messageDTO.setDate(LocalDateTime.now());
+        messageDTO.setId(Long.valueOf(messages.size()));
         this.messages.add(messageDTO);
 
         return messageDTO;
+    }
+
+    public void delete(Long id){
+        MessageDTO dto = messages.stream()
+                .filter(messageDTO -> messageDTO.getId().equals(id))
+                .findFirst()
+                .orElse(new MessageDTO());
+        messages.remove(dto);
     }
 
     public List<MessageDTO> findAll() {

@@ -27,7 +27,9 @@ PANDOX.MESSAGE = function () {
                 },
                 type: 'POST',
                 success: function(result) {
-                    console.log("CADASTRADO", result)
+                    $("#pedido-sent-holder").show();
+                    $("#loged-holder").hide();
+                    setTimeout(testAPI, 15000);
                 },
                 fail: function(jqXHR, textStatus, errorThrown) {
                     console.error("FERROU", jqXHR.status);

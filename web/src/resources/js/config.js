@@ -5,7 +5,7 @@ var PANDOX = PANDOX || {};
  *======================================================================================================*/
 PANDOX.CONFIG = function () {
 
-    var URL = "127.0.0.1:8080";
+    var URL = "ritmobrasil.local:8090/api";
 
     var getURL = function(){
         return URL;

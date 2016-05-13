@@ -93,6 +93,7 @@
     function testAPI() {
         console.log('Welcome!  Fetching your information.... ');
         $("#logging-holder").hide();
+        $("#pedido-sent-holder").hide();
         $("#loged-holder").show();
         FB.api('/me?fields=gender,name,id,birthday', function(response) {
             console.log(response);

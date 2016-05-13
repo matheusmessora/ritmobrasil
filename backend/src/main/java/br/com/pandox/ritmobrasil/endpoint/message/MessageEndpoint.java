@@ -4,9 +4,7 @@ import br.com.pandox.ritmobrasil.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,6 +18,12 @@ public class MessageEndpoint {
     public ResponseEntity<MessageDTO> save(MessageDTO dto) {
         MessageDTO saved = service.save(dto);
         return new ResponseEntity(saved, HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value = "message/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<MessageDTO> delete(@PathVariable("id") Long id) {
+        service.delete(id);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     @RequestMapping(value = "message", method = RequestMethod.GET)

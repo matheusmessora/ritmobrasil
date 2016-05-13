@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>|| Ritmo Brasil - ADMIN ||</title>
+
+    include "includes/head.html"
+</head>
+
+<body>
+include "includes/menu.html"
+
+<div class="container-fluid">
+    <div class="row">
+        include "includes/sidebar.html"
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="header">
+                        <div class="header-icon">
+                            <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                        </div>
+                        <div class="header-title">
+                            <h3>Audiência</h3>
+                            <p>Dados da audiência da rádio</p>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="panel audience">
+                        <div class="panel-body">
+                            <div class="audience-data soundpop"></div>
+                            Radio Soundpop <span class="soundpop-sign"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="panel audience">
+                        <div class="panel-body">
+                            <div class="audience-data ritmobrasil"></div>
+                            RITMO BRASIL <span class="ritmobrasil-sign"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="panel audience">
+                        <div class="panel-body">
+                            <div class="audience-data webputz"></div>
+                            Radio WebPutz <span class="webputz-sign"></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div> <!-- container -->
+
+
+include "includes/footer.html"
+<script>
+    PANDOX.AUDIENCE.init();
+</script>
+</body>
+</html>

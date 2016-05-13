@@ -1,0 +1,28 @@
+<div id="pedido-{{id}}" class="col-md-8 col-md-offset-2">
+    <div class="panel active">
+        <div class="panel-body">
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img
+                                height="64px"
+                                width="64px"
+                                src="https://scontent.frao1-1.fna.fbcdn.net/v/t1.0-9/12540997_1553327454990554_6809802716922936748_n.jpg?oh=0c154b501c87eae990fce2823e89fdd6&oe=57DEF883"
+                                alt="">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4>{{name}} - {{id}}</h4>
+                    <p>{{message}}
+                        <br />{{date}}
+                    </p>
+                </div>
+                <div class="media-right">
+                    <!--<i class="fa fa-check" aria-hidden="true"></i>-->
+                    <i x-id="{{id}}" class="fa fa-trash" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
