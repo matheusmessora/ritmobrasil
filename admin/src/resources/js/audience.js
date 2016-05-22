@@ -12,6 +12,7 @@ PANDOX.AUDIENCE = function () {
                 render("ritmobrasil", response.ritmobrasil[0]);
                 render("soundpop", response.soundpop[0]);
                 render("webputz", response.webputz[0]);
+                render("panico", response.panico[0]);
             });
             getAudience();
         }, 500);

@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 
 @Service
-public class SoundpopCrawler {
+public class PanicoCrawler {
 
     @Autowired
     private AudienceService service;
@@ -28,16 +28,16 @@ public class SoundpopCrawler {
             Integer audience = Integer.valueOf(getAudienceFrom64Kbps());
             total = audience + Integer.valueOf(getAudienceFrom128Kbps());
         } catch (Exception e) {
-//            e.printStackTrace();
+//            e.pr
         }
 
 
-        System.out.println("soundPop=" + total);
-        service.register("soundpop", new RadioAudience(total));
+        System.out.println("panico=" + total);
+        service.register("panico", new RadioAudience(total));
     }
 
     private String getAudienceFrom64Kbps() throws IOException {
-        Connection con = Jsoup.connect("http://172.82.128.10:19342/index.html?sid=1");
+        Connection con = Jsoup.connect("http://centova4.ciclanohost.com.br:8168/index.html?sid=1");
         con.ignoreHttpErrors(true).followRedirects(true);
         con.userAgent("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.21 (KHTML, like Gecko) Chrome/19.0.1042.0 " +
                 "Safari/535.21");
@@ -48,7 +48,7 @@ public class SoundpopCrawler {
         return html.split(" ")[7];
     }
     private String getAudienceFrom128Kbps() throws IOException {
-        Connection con = Jsoup.connect("http://172.82.128.10:19342/index.html?sid=4");
+        Connection con = Jsoup.connect("http://centova4.ciclanohost.com.br:8168/index.html?sid=2");
         con.ignoreHttpErrors(true).followRedirects(true);
         con.userAgent("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.21 (KHTML, like Gecko) Chrome/19.0.1042.0 " +
                 "Safari/535.21");

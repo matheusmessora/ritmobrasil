@@ -23,7 +23,12 @@ public class WebPutzCrawler {
     @Scheduled(fixedDelay=5000)
     public void loadAudience() throws IOException {
 
-        Integer total = Integer.valueOf(getAudienceFrom64Kbps());
+        Integer total = 0;
+        try {
+            total = Integer.valueOf(getAudienceFrom64Kbps());
+        } catch (Exception e) {
+//            e.printStackTrace();
+        }
 
 
         System.out.println("webputz=" + total);
@@ -35,6 +40,7 @@ public class WebPutzCrawler {
         con.ignoreHttpErrors(true).followRedirects(true);
         con.userAgent("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.21 (KHTML, like Gecko) Chrome/19.0.1042.0 " +
                 "Safari/535.21");
+
         Document doc = con.get();
         Elements b = doc.getElementsByClass("streamdata");
         Element element = b.get(3);

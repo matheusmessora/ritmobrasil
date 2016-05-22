@@ -1,7 +1,8 @@
-package br.com.pandox.ritmobrasil.endpoint;
+package br.com.pandox.ritmobrasil.endpoint.live;
 
 public class LiveDTO {
 
+    private Integer id;
     private boolean live;
     private String showName;
     private String hoster;
@@ -13,6 +14,14 @@ public class LiveDTO {
         this.live = live;
         this.showName = showName;
         this.hoster = hoster;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(final Integer id) {
+        this.id = id;
     }
 
     public boolean isLive() {

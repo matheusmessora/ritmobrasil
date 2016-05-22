@@ -23,6 +23,20 @@ public class RitmoBrasilCrawler {
     @Scheduled(fixedDelay=5000)
     public void loadRitmoBrasilAudience() throws IOException {
 
+
+        Integer audience = 0;
+        try {
+            audience = getAudience();
+        } catch (Exception e) {
+//            e.printStackTrace();
+        }
+
+
+        System.out.println("ritmobrasil = " + audience);
+        service.register("ritmobrasil", new RadioAudience(audience));
+    }
+
+    private Integer getAudience() throws IOException {
         Connection con = Jsoup.connect("http://shoutcast.umhost.com.br:2006/");
         con.ignoreHttpErrors(true).followRedirects(true);
         con.userAgent("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.21 (KHTML, like Gecko) Chrome/19.0.1042.0 " +
@@ -31,11 +45,7 @@ public class RitmoBrasilCrawler {
         Elements b = doc.getElementsByTag("b");
         Element element = b.get(2);
         String html = element.html();
-        String audience = html.split(" ")[0];
-
-
-        System.out.println("ritmobrasil = " + audience);
-        service.register("ritmobrasil", new RadioAudience(Integer.valueOf(audience)));
+        return Integer.valueOf(html.split(" ")[0]);
     }
 
 }

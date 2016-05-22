@@ -1,6 +1,7 @@
 @import 'colors';
 @import 'default';
 @import 'audience';
+@import 'button';
 @import url(http://fonts.googleapis.com/css?family=Oswald);
 
 body {
@@ -59,4 +60,30 @@ body {
       color: @links-hover;
     }
   }
+}
+
+
+/*
+
+TABLE
+
+*/
+thead > tr > th {
+  color: @bold;
+  font-weight: bold;
+}
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+  border-top: 1px solid @table-border;
+}
+.table > thead > tr > th {
+  border-bottom: none;
+}
+.table>tbody>tr.active>td, .table>tbody>tr.active>th, .table>tbody>tr>td.active, .table>tbody>tr>th.active, .table>tfoot>tr.active>td, .table>tfoot>tr.active>th, .table>tfoot>tr>td.active, .table>tfoot>tr>th.active, .table>thead>tr.active>td, .table>thead>tr.active>th, .table>thead>tr>td.active, .table>thead>tr>th.active {
+  background: transparent;
+}
+.table>tbody>tr.active>td, .table>tbody>tr.active>th, .table>tbody>tr>td.active, .table>tbody>tr>th.active, .table>tfoot>tr.active>td, .table>tfoot>tr.active>th, .table>tfoot>tr>td.active, .table>tfoot>tr>th.active, .table>thead>tr.active>td, .table>thead>tr.active>th, .table>thead>tr>td.active, .table>thead>tr>th.active {
+  background: transparent;
+}
+tr > td > .glyphicon {
+  color: @active;
 }

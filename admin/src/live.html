@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>|| Ritmo Brasil - ADMIN ||</title>
+
+    include "includes/head.html"
+</head>
+
+<body>
+include "includes/menu.html"
+
+<div class="container-fluid">
+    <div class="row">
+        include "includes/sidebar.html"
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="header">
+                        <div class="header-icon">
+                            <span class="glyphicon glyphicon glyphicon-equalizer"></span>
+                        </div>
+                        <div class="header-title">
+                            <h3>Ao vivo</h3>
+                            <p>Gerenciamento do programa ao vivo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Programação</h2>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th style="width: 12px"></th>
+                            <th>Programa</th>
+                            <th>Apresentador</th>
+                            <th>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="icon-active"></td>
+                            <td>Som da Ritmo</td>
+                            <td></td>
+                            <td>
+                                <button x-id="1" type="button" class="btn btn-default btn-xs"><i class="fa fa-check"
+                                                                                                 aria-hidden="true"></i>
+                                    Conectar
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="icon-active"></td>
+                            <td>Fora de Hora</td>
+                            <td>Snake</td>
+                            <td>
+                                <button x-id="2" type="button" class="btn btn-default btn-xs"><i class="fa fa-check"
+                                                                                                 aria-hidden="true"></i>
+                                    Conectar
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="icon-active"></td>
+                            <td>Ritmo das Pistas</td>
+                            <td>Carlos Nunes</td>
+                            <td>
+                                <button x-id="3" type="button" class="btn btn-default btn-xs"><i class="fa fa-check"
+                                                                                                 aria-hidden="true"></i>
+                                    Conectar
+                                </button>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div> <!-- container -->
+
+
+include "includes/footer.html"
+<script>
+    PANDOX.LIVE.init();
+</script>
+</body>
+</html>
